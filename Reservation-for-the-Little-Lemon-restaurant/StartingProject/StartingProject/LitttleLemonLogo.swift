@@ -2,7 +2,8 @@ import SwiftUI
 
 struct LittleLemonLogo: View {
     var body: some View {
-        EmptyView()
+        //Creating a view for the logo
+        Image("littleLemon")
     }
 }
 

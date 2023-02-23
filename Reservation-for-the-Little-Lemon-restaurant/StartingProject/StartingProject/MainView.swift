@@ -7,7 +7,8 @@ struct MainView: View {
     
     var body: some View {
         TabView (selection: $model.tabViewSelectedIndex){
-            EmptyView() //4
+            //Add the LocationsView to MainView
+            LocationsView() //4
                 .tag(0)
                 .tabItem {
                     if !model.displayingReservationForm {

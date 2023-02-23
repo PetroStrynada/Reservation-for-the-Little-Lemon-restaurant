@@ -8,7 +8,6 @@ struct LocationsView: View {
             LittleLemonLogo() // 1
                 .padding(.top, 50)
             //Create a Text element containing one of two strings
-            //To make animation faster try this: create VStack within LittleLemonLogo() and add there this Text view
             Text(model.displayingReservationForm ? "Reservation Details" : "Select a location") // 2
             .padding([.leading, .trailing], 40)
             .padding([.top, .bottom], 8)

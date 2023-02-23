@@ -51,6 +51,14 @@ struct ReservationForm: View {
                                   formatter: NumberFormatter())
                         .keyboardType(.numberPad)
                         // add a modifier here
+                        //TextField Validation
+                        //The number of guests must be 1 or more. If the number is less than 1 change it with the number 1
+                        .onChange(of: party, perform: { _ in
+                            let minGuestNumber = 1
+                            if party < minGuestNumber {
+                                party = minGuestNumber
+                            }
+                        })
                     }
                     
                     
@@ -119,8 +127,9 @@ struct ReservationForm: View {
                     
                     
                     // add the RESERVE button
+                    //Run validateForm when selected
                     Button(action: {
-
+                        validateForm()
                     }, label: {
                         Text("CONFIRM RESERVATION")
                     })
@@ -133,7 +142,7 @@ struct ReservationForm: View {
             }
             
             // Forms have this space between the title and the content
-            // that is amost impossible to remove without incurring
+            // that is almost impossible to remove without incurring
             // into complex steps that run out of the scope of this
             // course. So, this is a hack, to bring the content up
             // try to comment this line and see what happens.
@@ -148,7 +157,10 @@ struct ReservationForm: View {
             }
             
             // add an alert after this line
-            
+            //Show an alert if the form validation fails
+            .alert(isPresented: $showFormInvalidMessage) {
+                Alert(title: Text(""), message: Text (errorMessage))
+            }
         }
         .onAppear {
             model.displayingReservationForm = true

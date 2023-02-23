@@ -4,18 +4,26 @@ struct LocationsView: View {
     @EnvironmentObject var model:Model
     var body: some View {
         VStack {
-            // Add the logo view to LocationsView
+            //Add the logo view to LocationsView
             LittleLemonLogo() // 1
                 .padding(.top, 50)
-            
-            EmptyView() // 2
+            //Create a Text element containing one of two strings
+            //To make animation faster try this: create VStack within LittleLemonLogo() and add there this Text view
+            Text(model.displayingReservationForm ? "Reservation Details" : "Select a location") // 2
             .padding([.leading, .trailing], 40)
             .padding([.top, .bottom], 8)
             .background(Color.gray.opacity(0.2))
             .cornerRadius(20)
             
             NavigationView {
-                EmptyView() // 3
+                //Create a List inside a NavigationView
+                List(model.restaurants) { restaurant in
+                    //Add a NavigationLink to the List
+                    NavigationLink(destination: ReservationForm(restaurant)) {
+                        RestaurantView(restaurant)
+                    }
+                } // 3
+                .listStyle(.plain)
                 .navigationBarTitle("")
                 .navigationBarHidden(true)
             }

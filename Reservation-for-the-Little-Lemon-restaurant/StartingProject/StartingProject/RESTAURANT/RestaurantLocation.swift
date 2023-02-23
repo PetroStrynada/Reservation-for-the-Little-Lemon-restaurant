@@ -1,6 +1,8 @@
 import Foundation
 
-struct RestaurantLocation:Hashable {
+//added Identifiable and let id = UUID() to work within the List in LocationsView
+struct RestaurantLocation:Hashable, Identifiable {
+    let id = UUID()
   let city:String
   let neighborhood:String
   let phoneNumber:String

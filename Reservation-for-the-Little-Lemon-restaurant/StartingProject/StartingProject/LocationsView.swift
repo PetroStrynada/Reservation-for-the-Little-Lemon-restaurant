@@ -4,7 +4,8 @@ struct LocationsView: View {
     @EnvironmentObject var model:Model
     var body: some View {
         VStack {
-            EmptyView() // 1
+            // Add the logo view to LocationsView
+            LittleLemonLogo() // 1
                 .padding(.top, 50)
             
             EmptyView() // 2
